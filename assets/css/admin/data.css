@@ -1,0 +1,205 @@
+/* -----------------------------------
+   GLOBAL BODY STRUCTURE
+----------------------------------- */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #f5f7f5;
+    font-family: "Poppins", sans-serif;
+}
+
+main {
+    flex: 1;
+}
+
+/* -----------------------------------
+   PAGE WRAPPER
+----------------------------------- */
+.page-container,
+.content-wrapper {
+    padding: 22px;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* -----------------------------------
+   TOOLBAR
+----------------------------------- */
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    flex-wrap: nowrap;
+}
+
+/* Search box proporsional */
+.search-box {
+    flex: 0 0 330px;
+    padding: 12px 15px;
+    border: 1px solid #d0d0d0;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+.search-box:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 6px rgba(76, 175, 80, 0.35);
+    outline: none;
+}
+
+/* Filter dropdown */
+.filter-status {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #d0d0d0;
+    font-size: 15px;
+    background: white;
+    transition: 0.2s ease;
+}
+
+.filter-status:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 6px rgba(76, 175, 80, 0.35);
+    outline: none;
+}
+
+/* -----------------------------------
+   TABLE WRAPPER
+----------------------------------- */
+.table-wrapper {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px;
+    border: 1px solid #e6e6e6;
+    overflow-x: auto;
+}
+
+.main-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 880px;
+    font-size: 15px;
+}
+
+/* Header */
+.main-table thead tr {
+    background: #eef4ee;
+}
+
+.main-table th {
+    padding: 13px 12px;
+    font-weight: 600;
+    color: #2f402c;
+    border-bottom: 2px solid #d7e0d6;
+    white-space: nowrap;
+}
+
+/* Table cells */
+.main-table td {
+    padding: 12px 12px;
+    border-bottom: 1px solid #ececec;
+}
+
+/* Hover */
+.main-table tbody tr:hover {
+    background: #f6faf5;
+    transition: 0.2s ease;
+}
+
+/* -----------------------------------
+   BADGES — MODERN LOOK
+----------------------------------- */
+.badge {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.badge-hijau { background: #d8f4d8; color: #1f7a1f; }
+.badge-merah { background: #ffd6d6; color: #bb2a2a; }
+.badge-putih { background: #e9e9e9; color: #555; }
+
+/* -----------------------------------
+   ACTION BUTTONS — CLEAN MODERN
+----------------------------------- */
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.btn {
+    border: none;
+    padding: 7px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.2s ease;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+/* Button colors refined */
+.btn-edit { background: #e5f1ff; color: #0b5fbd; }
+.btn-detail { background: #f0eaff; color: #5a32c6; }
+.btn-notif { background: #fff3c9; color: #a07600; }
+.btn-update { background: #e4f7e7; color: #257a2b; }
+.btn-delete { background: #ffe1e1; color: #b22222; }
+
+.btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* -----------------------------------
+   RESPONSIVE DESIGN
+----------------------------------- */
+@media (max-width: 900px) {
+    .toolbar {
+        flex-wrap: wrap;
+    }
+
+    .search-box,
+    .filter-status {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Sembunyikan beberapa kolom */
+    .main-table th:nth-child(4),
+    .main-table td:nth-child(4),
+    .main-table th:nth-child(5),
+    .main-table td:nth-child(5) {
+        display: none;
+    }
+
+    .page-container {
+        padding: 16px;
+    }
+}
+
+/* -----------------------------------
+   FOOTER FIXED BOTTOM
+----------------------------------- */
+footer {
+    background: #f2f2f2;
+    padding: 16px;
+    text-align: center;
+    font-size: 14px;
+    color: #444;
+    margin-top: auto;
+    border-top: 1px solid #d9d9d9;
+}

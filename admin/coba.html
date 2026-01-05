@@ -1,0 +1,147 @@
+<!-- Dashboard Admin PSAT Kabupaten Sidoarjo (HTML + CSS + PHP) -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin PSAT</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; }
+        header { background: #0b5ed7; padding: 15px; color: white; font-size: 20px; }
+        .container { display: flex; }
+        .sidebar { width: 250px; background: white; padding: 20px; min-height: 100vh; box-shadow: 0 0 10px #ddd; }
+        .sidebar a { display: block; padding: 10px; margin-bottom: 5px; background: #eee; text-decoration: none; color: #333; border-radius: 5px; }
+        .sidebar a:hover { background: #d5e8ff; }
+        .content { flex: 1; padding: 20px; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #ddd; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ccc; padding: 10px; font-size: 14px; }
+        th { background: #eaeaea; }
+        button { padding: 8px 12px; border: none; border-radius: 5px; cursor: pointer; }
+        .btn-blue { background: #0b5ed7; color: white; }
+        .btn-red { background: #d72638; color: white; }
+        .btn-green { background: #2e8b57; color: white; }
+        input, select, textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+<header>Dashboard Admin PSAT Kabupaten Sidoarjo</header>
+
+        <!-- DASHBOARD -->
+        <section id="dashboard">
+            <h2>Ringkasan Cepat</h2>
+            <div class="card-grid">
+                <div class="card">Total Pelaku Usaha<br><b>0</b></div>
+                <div class="card">Produk Tersertifikasi<br><b>0</b></div>
+                <div class="card">Label Aktif<br><b>Putih / Hijau / Merah</b></div>
+                <div class="card">Sertifikat Mau Habis<br><b>0</b></div>
+            </div>
+        </section>
+
+        <hr><br>
+
+        <!-- INPUT PELAKU USAHA -->
+        <section id="input">
+            <h2>Input Data Pelaku Usaha</h2>
+            <form method="POST" enctype="multipart/form-data" action="simpan.php">
+                <input type="text" name="nama" placeholder="Nama Usaha" required>
+                <input type="text" name="alamat" placeholder="Alamat" required>
+                <input type="text" name="kontak" placeholder="Kontak" required>
+                <input type="text" name="komoditas" placeholder="Komoditas" required>
+
+                <select name="tipe">
+                    <option value="PSAT-PDU">PSAT-PDU</option>
+                    <option value="PSAT-PR">PSAT-PR</option>
+                </select>
+
+                <input type="text" name="registrasi" placeholder="Nomor Registrasi" required>
+                Tanggal Terbit:<input type="date" name="terbit" required>
+                Tanggal Berakhir:<input type="date" name="berakhir" required>
+
+                Upload Sertifikat: <input type="file" name="sertifikat">
+                Upload Foto Kemasan: <input type="file" name="kemasan">
+
+                <textarea name="klaim" placeholder="Klaim Produk"></textarea>
+
+                <select name="label">
+                    <option value="Putih">Putih</option>
+                    <option value="Hijau">Hijau</option>
+                </select>
+
+                <button class="btn-blue">Simpan Data</button>
+            </form>
+        </section>
+
+        <hr><br>
+
+        <!-- DAFTAR PELAKU USAHA -->
+        <section id="daftar">
+            <h2>Daftar Pelaku Usaha</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pelaku Usaha</th>
+                        <th>Produk</th>
+                        <th>Label</th>
+                        <th>Terbit</th>
+                        <th>Berakhir</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data akan di-loop menggunakan PHP -->
+                    <?php
+                    // contoh struktur
+                    // foreach ($data as $row) {
+                    ?>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>
+                            <button class="btn-blue">Detail</button>
+                            <button class="btn-green">WA</button>
+                            <button class="btn-red">Hapus</button>
+                        </td>
+                    </tr>
+                    <?php // } ?>
+                </tbody>
+            </table>
+        </section>
+
+        <hr><br>
+
+        <!-- MONITORING SERTIFIKAT -->
+        <section id="monitoring">
+            <h2>Monitoring Sertifikat</h2>
+            <ul>
+                <li>Sertifikat kadaluarsa kurang dari 30 hari</li>
+                <li>Sertifikat sudah kadaluarsa</li>
+                <li>Sertifikat baru diperbarui</li>
+                <li>Perubahan label (Putih → Hijau)</li>
+            </ul>
+        </section>
+
+        <hr><br>
+
+        <!-- TEMPLATE PESAN -->
+        <section id="pesan">
+            <h2>Template Pesan Otomatis (WA / Email)</h2>
+            <textarea rows="5">Yth. Pelaku Usaha {{nama_usaha}},
+Sertifikat PSAT produk {{nama_produk}} akan berakhir pada {{tgl_berakhir}}.
+Silakan melakukan pembaruan melalui sistem PSAT pusat.</textarea>
+            <br>
+            <button class="btn-green">Kirim Pesan</button>
+        </section>
+
+    </div>
+</div>
+
+</body>
+</html>

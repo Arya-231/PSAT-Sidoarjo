@@ -1,0 +1,154 @@
+/* ===============================
+   PANDUAN PAGE
+================================ */
+.panduan-container {
+  padding: 80px 8%;
+  background: #f8fafc;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Wrapper */
+.panduan-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  background: #ffffff;
+  padding: 50px;
+  border-radius: 22px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+
+/* Image */
+.panduan-image img {
+  width: 320px;
+  border-radius: 18px;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+  transition: transform .3s ease;
+}
+
+.panduan-image img:hover {
+  transform: scale(1.06);
+}
+
+/* Text */
+.panduan-text h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #166534;
+  margin-bottom: 14px;
+}
+
+.panduan-text p {
+  font-size: 16px;
+  color: #4b5563;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+/* Button */
+.btn-buka-panduan {
+  background: linear-gradient(135deg, #15803d, #22c55e);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 14px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.btn-buka-panduan:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(34,197,94,.4);
+}
+
+/* ===============================
+   MODAL
+================================ */
+.panduan-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+  z-index: 9999;
+}
+
+.panduan-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.panduan-modal-content {
+  background: #ffffff;
+  max-width: 960px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 26px;
+  transform: scale(.95);
+  transition: transform .3s ease;
+}
+
+.panduan-modal.show .panduan-modal-content {
+  transform: scale(1);
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+/* Close */
+.panduan-close {
+  float: right;
+  font-size: 26px;
+  cursor: pointer;
+  color: #374151;
+}
+
+/* Flipbook */
+#flipbook {
+  height: 600px;
+  background: #f1f5f9;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flipbook-placeholder {
+  color: #6b7280;
+  font-size: 16px;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 900px) {
+  .panduan-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .panduan-image img {
+    width: 80%;
+  }
+}
+
+@media (max-width: 600px) {
+  .panduan-text h2 {
+    font-size: 26px;
+  }
+
+  #flipbook {
+    height: 420px;
+  }
+}

@@ -1,0 +1,177 @@
+/* --- TITLE --- */
+.page-title {
+    font-weight: 600;
+    font-size: 22px;
+    color: #2f3d2a;
+    margin-bottom: 20px;
+}
+
+/* --- CARD STATISTIK --- */
+.dashboard-cards .cardd {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px;
+    border: 1px solid #e8efe6;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.dashboard-cards .cardd:hover {
+    transform: translateY(-3px);
+    border-color: #b7d4b0; /* matcha soft */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.cardd h5 {
+    margin: 0;
+    font-size: 15px;
+    color: #50634b;
+    font-weight: 600;
+}
+
+.cardd .value {
+    font-size: 28px;
+    margin-top: 6px;
+    color: #2f3d2a;
+    font-weight: 700;
+}
+
+.label-list {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #4d6048;
+}
+
+/* --- CARD WRAPPER CHART & LIST --- */
+.chart-card,
+.list-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 22px;
+    border: 1px solid #e8efe6;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.chart-card h5,
+.list-card h5 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2f3d2a;
+    margin-bottom: 15px;
+}
+
+/* --- LIST PENGINGAT --- */
+.list-card ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.list-card li {
+    margin-bottom: 6px;
+    color: #4d6048;
+    font-size: 14px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 576px) {
+    .cardd .value {
+        font-size: 22px;
+    }
+
+    .cardd h5 {
+        font-size: 14px;
+    }
+}
+
+/* --- STATUS LABEL VISUAL (Compact) --- */
+.label-status {
+    margin-top: 8px;
+}
+
+.label-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f7f9f7;
+    border: 1px solid #e5eee3;
+    padding: 6px 10px;    /* Lebih kecil */
+    border-radius: 6px;   /* Lebih simple */
+    margin-bottom: 6px;   /* Jarak diperkecil */
+    font-size: 13px;      /* Ukuran font diseragamkan */
+    color: #344b32;
+    height: 32px;         /* Biar sejajar dengan item container lain */
+    transition: 0.2s;
+}
+
+.label-item:hover {
+    background: #eef4ec;
+}
+
+/* DOT WARNA */
+.label-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.label-dot.putih { background: #ffffff; border: 1px solid #ccc; }
+.label-dot.hijau { background: #3cb371; }
+.label-dot.merah { background: #e74c3c; }
+
+.count {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+
+/* LIST PENGINGAT */
+.alert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.alert-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.4;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    border-left: 4px solid transparent;
+}
+
+.alert-item i {
+    font-size: 18px;
+    margin-top: 2px;
+}
+
+/* Warna Status */
+.alert-item.warning {
+    background: #fff8e5;
+    border-left-color: #f4b400;
+    color: #7a5b00;
+}
+
+.alert-item.danger {
+    background: #ffeaea;
+    border-left-color: #e74c3c;
+    color: #962f26;
+}
+
+.alert-item.info {
+    background: #eaf4ff;
+    border-left-color: #3498db;
+    color: #1d4f72;
+}
+
+.alert-item.success {
+    background: #e8f6ea;
+    border-left-color: #2ecc71;
+    color: #1f6b3d;
+}

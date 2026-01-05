@@ -1,0 +1,300 @@
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+.navbar-psat,
+.navbar-psat * {
+  font-family: "Poppins", sans-serif !important;
+}
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #fafafa;
+  color: #333;
+}
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+.hero-section {
+  background: linear-gradient(135deg, #1a8732, #3cb23c);
+  color: #ffffff;
+  padding: 80px 20px;
+  border-radius: 0 0 60px 60px;
+}
+
+.hero-section img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 20px;
+}
+
+.highlight-box {
+  background-color: #c4a100;
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* =========================================================
+   INFO BOX
+========================================================= */
+.info-box {
+  border-radius: 15px;
+  background: #ffffff;
+  transition: 0.3s ease;
+}
+
+.info-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* =========================================================
+   NAVBAR PSAT (AMAN DARI BOOTSTRAP)
+========================================================= */
+.navbar-psat {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 14px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* =========================================================
+   LOGO
+========================================================= */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-logo img {
+  height: 56px;
+}
+
+.navbar-logo span {
+  font-size: 22px;
+  font-weight: 600;
+  color: #14532d;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   MENU
+========================================================= */
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li a {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #374151;
+  padding: 6px 0;
+  position: relative;
+  transition: 0.2s ease;
+}
+
+.navbar-menu li a:hover {
+  color: #15803d;
+}
+
+/* ACTIVE */
+.navbar-menu li a.active {
+  color: #15803d;
+  font-weight: 600;
+}
+
+.navbar-menu li a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 3px;
+  background: #22c55e;
+  border-radius: 10px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .hero-section {
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .navbar-menu {
+    gap: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .navbar-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .navbar-logo span {
+    font-size: 18px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .navbar-menu li a {
+    font-size: 14px;
+  }
+
+  .hero-section {
+    padding: 50px 16px;
+  }
+}
+
+/* ===============================
+   FOOTER
+================================ */
+.site-footer {
+  background: #1f4d2b;
+  color: #ffffff;
+  padding: 60px 10% 30px;
+  font-family: "Poppins", sans-serif;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+.site-footer h4 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.site-footer p,
+.site-footer a {
+  font-size: 14px;
+  color: #e5e7eb;
+  line-height: 1.7;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  text-align: center;
+  font-size: 13px;
+  color: #d1d5db;
+}
+
+
+.bg-dark-green {
+  background: #1f522c;
+}
+
+.site-footer {
+  color: #ffffff;
+  padding: 60px 0 40px;
+}
+
+.footer-list,
+.footer-contact {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-list li,
+.footer-contact li {
+  margin-bottom: 8px;
+}
+
+.footer-list a {
+  color: #e5e5e5;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.footer-list a:hover {
+  color: #90ee90;
+}
+
+.footer-contact i {
+  margin-right: 6px;
+  color: #90ee90;
+}
+
+/* Social Icons */
+.social-links a {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.2);
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  transition: 0.25s ease;
+  font-size: 18px;
+}
+
+.social-links a:hover {
+  background: #34a853;
+}
+
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
