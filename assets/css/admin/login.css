@@ -1,139 +1,134 @@
-/* -----------------------------------------
-   GLOBAL
------------------------------------------- */
-body {
+/* ===============================
+   GLOBAL RESET
+================================ */
+* {
     margin: 0;
     padding: 0;
-    background: #f3f6f4;
-    font-family: "Poppins", sans-serif;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    box-sizing: border-box;
+    font-family: "Poppins", Arial, sans-serif;
 }
 
-/* -----------------------------------------
-   LOGIN WRAPPER
------------------------------------------- */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a8732, #22c55e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===============================
+   LOGIN CONTAINER
+================================ */
 .login-container {
     width: 100%;
-    max-width: 420px;
     padding: 20px;
 }
 
 .login-box {
+    max-width: 380px;
+    margin: auto;
     background: #ffffff;
-    padding: 35px 28px;
+    padding: 40px 35px;
     border-radius: 18px;
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+    text-align: center;
     animation: fadeIn 0.4s ease;
 }
 
-/* Header */
-.login-header {
-    text-align: center;
-    margin-bottom: 28px;
-}
-
-.login-header img {
-    width: 70px;
-    margin-bottom: 10px;
-}
-
-.login-header h2 {
-    margin: 0;
-    color: #2e7d32;
+/* ===============================
+   TEXT
+================================ */
+.login-box h2 {
+    font-size: 26px;
+    color: #1a8732;
     font-weight: 700;
+    margin-bottom: 6px;
 }
 
-.login-header p {
-    color: #444;
+.login-box p {
     font-size: 14px;
-    margin-top: 6px;
+    color: #6b7280;
+    margin-bottom: 22px;
 }
 
-/* -----------------------------------------
-   INPUT GROUP
------------------------------------------- */
-.input-group {
-    margin-bottom: 18px;
+/* Error message */
+.login-box p[style*="red"] {
+    background: #fee2e2;
+    color: #b91c1c !important;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    margin-bottom: 15px;
 }
 
-.input-group label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: #333;
-}
-
-.input-field {
+/* ===============================
+   FORM
+================================ */
+.login-box form {
     display: flex;
-    align-items: center;
-    border: 1px solid #dcdcdc;
-    padding: 10px 12px;
-    border-radius: 8px;
-    background: #fafafa;
-    transition: 0.25s ease;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.input-field i {
-    color: #6b6b6b;
-    margin-right: 10px;
-}
-
-.input-field input {
+.login-box input {
     width: 100%;
-    border: none;
-    background: none;
+    padding: 13px 15px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
     outline: none;
-    font-size: 15px;
+    transition: all 0.25s ease;
 }
 
-/* Focus effect */
-.input-field:focus-within {
-    border-color: #43a047;
-    box-shadow: 0 0 4px rgba(67, 160, 71, 0.35);
+.login-box input:focus {
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
 }
 
-/* -----------------------------------------
+/* ===============================
    BUTTON
------------------------------------------- */
-.btn-login {
-    width: 100%;
-    padding: 12px;
-    background: #43a047;
+================================ */
+.login-box button {
+    margin-top: 8px;
+    padding: 13px;
+    background: linear-gradient(135deg, #1a8732, #22c55e);
+    color: #ffffff;
     border: none;
-    color: white;
+    border-radius: 14px;
     font-size: 15px;
     font-weight: 600;
-    border-radius: 8px;
     cursor: pointer;
-    transition: 0.25s ease;
+    transition: all 0.25s ease;
 }
 
-.btn-login:hover {
-    background: #2e7d32;
+.login-box button:hover {
     transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(34, 197, 94, 0.35);
 }
 
-/* Footer Text */
-.footer-text {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 12px;
-    color: #777;
-}
-
-/* Smooth appear animation */
+/* ===============================
+   ANIMATION
+================================ */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Responsive */
+/* ===============================
+   RESPONSIVE
+================================ */
 @media (max-width: 480px) {
     .login-box {
-        padding: 30px 22px;
+        padding: 30px 25px;
+    }
+
+    .login-box h2 {
+        font-size: 22px;
     }
 }

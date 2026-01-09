@@ -3,6 +3,7 @@ $title = "Daftar Pelaku Usaha / Produk";
 $custom_css = "detail.css";
 
 include '../includes/config.php';
+include 'auth_check.php';
 include 'header.php';
 include 'sidebar.php';
 
@@ -120,28 +121,42 @@ $status_label = strtolower($data['label']) === 'hijau' ? 'badge-hijau' : 'badge-
     <div class="card-section">
     <h3 class="section-title">Foto Kemasan Produk</h3>
 
+    <div class="d-flex flex-wrap gap-2">
     <?php
     if (!empty($data['foto_kemasan'])) :
-
-        // jika disimpan sebagai JSON
+        // 1. Dekode JSON dari database
         $fotos = json_decode($data['foto_kemasan'], true);
 
-        // fallback jika pakai koma
+        // 2. Fallback jika data di database berupa string pisahan koma (format lama)
         if (!is_array($fotos)) {
-            $fotos = explode(',', $data['foto_kemasan']);
+            $fotos = array_filter(explode(',', $data['foto_kemasan']));
         }
 
         foreach ($fotos as $foto) :
+            // 3. Tentukan path file yang benar
+            // Sesuaikan path ini dengan folder tempat Anda menyimpan file (uploads/kemasan/)
+            $file_path = "../uploads/kemasan/" . trim($foto);
+            
+            // 4. Cek apakah file ada di folder sebelum ditampilkan
+            if (file_exists($file_path)) :
     ?>
-            <img src="uploads/kemasan/<?= htmlspecialchars(trim($foto)) ?>"
-                 class="preview-img"
-                 alt="Foto Kemasan Produk">
-    <?php
+                <a href="<?= $file_path ?>" target="_blank">
+                    <img src="<?= $file_path ?>" 
+                         class="preview-img img-thumbnail" 
+                         style="width: 150px; height: 150px; object-fit: cover;"
+                         alt="Foto Kemasan Produk">
+                </a>
+    <?php 
+            else :
+                // Tampilkan placeholder jika file hilang di folder
+                echo '<div class="alert alert-light border p-2" style="width:150px; font-size:12px;">File tidak ditemukan: '.htmlspecialchars($foto).'</div>';
+            endif;
         endforeach;
     else :
     ?>
-        <p>Tidak ada foto kemasan</p>
+        <p class="text-muted italic">Tidak ada foto kemasan yang diunggah.</p>
     <?php endif; ?>
+    </div>
 </div>
 
 

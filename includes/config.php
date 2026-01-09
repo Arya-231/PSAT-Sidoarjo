@@ -7,7 +7,7 @@
 $host     = "localhost";       // Nama host (biasanya localhost)
 $user     = "root";            // Username database
 $pass     = "";                // Password database
-$db       = "psat_sidoarjo";   // Nama database
+$db       = "psat_sidoarjo_db";   // Nama database
 
 // Koneksi ke Database
 $conn = mysqli_connect($host, $user, $pass, $db);

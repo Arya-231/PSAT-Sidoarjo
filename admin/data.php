@@ -3,6 +3,7 @@ $title = "Daftar Pelaku Usaha / Produk";
 $custom_css = "data.css";
 
 include "../includes/config.php";
+include 'auth_check.php';
 include 'header.php';
 include 'sidebar.php';
 
