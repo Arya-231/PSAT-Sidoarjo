@@ -1,23 +1,43 @@
 /* ============================================
    BASE
 ============================================ */
+/* 1. Pastikan kontainer utama tahu tinggi layar */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
-    background: #f6faf6;
-    font-family: "Poppins", sans-serif;
-    color: #333;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* ============================================
-   CONTENT WRAPPER
-============================================ */
+/* 2. Berikan kompensasi jika sidebar Anda Fixed */
+/* Anggap lebar sidebar adalah 250px, sesuaikan dengan milik Anda */
+.content-wrapper, footer {
+    margin-left: 250px; 
+}
+
+/* 3. Dorong Footer ke bawah */
 .content-wrapper {
-    margin-left: 230px;
-    padding: 28px 32px;
-    transition: 0.3s ease;
+    flex: 1 0 auto; /* Mengambil sisa ruang kosong */
 }
 
+footer {
+    flex-shrink: 0; /* Footer dilarang menciut */
+    background: #fff;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+/* 4. Responsif: Jika di HP sidebar biasanya hilang/sembunyi */
+@media (max-width: 768px) {
+    .content-wrapper, footer {
+        margin-left: 0;
+    }
+}
 /* ============================================
    CARD
 ============================================ */
@@ -294,3 +314,4 @@ input:hover, select:hover {
         display: block;
     }
 }
+

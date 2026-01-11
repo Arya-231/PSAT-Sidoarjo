@@ -11,7 +11,7 @@ include 'includes/nav.php';
   <div class="panduan-wrapper">
 
     <div class="panduan-image">
-      <img src="crousent.jpeg" alt="Panduan PSAT" id="openPanduan">
+      <img src="assets/img/sidak.png" alt="Panduan PSAT" id="openPanduan">
     </div>
 
     <div class="panduan-text">
@@ -38,10 +38,14 @@ include 'includes/nav.php';
     <h3 class="modal-title">Panduan Pengemasan & Pelabelan PSAT</h3>
 
     <div id="flipbook">
-      <p class="flipbook-placeholder">
-        📄 Flipbook / PDF Panduan akan ditampilkan di sini
-      </p>
-    </div>
+  <iframe 
+    src="assets/img/oii.pdf"
+    frameborder="0"
+    width="100%"
+    height="100%">
+  </iframe>
+</div>
+
   </div>
 </div>
 

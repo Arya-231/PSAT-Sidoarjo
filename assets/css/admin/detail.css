@@ -134,30 +134,38 @@
 .notif-buttons {
     display: flex;
     gap: 12px;
+    margin-top: 15px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: white;
 }
 
 .btn-wa {
-    background: #e8f5e9;
-    color: #2e7d32;
+    background-color: #25D366; /* Warna khas WhatsApp */
+}
+
+.btn-wa:hover {
+    background-color: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
 
 .btn-email {
-    background: #ede7f6;
-    color: #5e35b1;
+    background-color: #3b82f6; /* Biru modern */
 }
 
-.btn-wa, .btn-email {
-    padding: 10px 16px;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.btn-wa:hover, .btn-email:hover {
+.btn-email:hover {
+    background-color: #1d4ed8;
     transform: translateY(-2px);
-    opacity: 0.85;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 /* RESPONSIVE IMAGE */

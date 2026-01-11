@@ -1,6 +1,7 @@
 <?php
 include "../includes/config.php";
 include "../includes/function.php";
+include 'auth_check.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 

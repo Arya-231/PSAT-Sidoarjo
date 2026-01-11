@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Admin</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/dinpanperta.png">
     <link rel="stylesheet" href="../assets/CSS/admin/login.css">
 </head>
 <body>

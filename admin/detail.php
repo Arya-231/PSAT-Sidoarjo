@@ -3,7 +3,6 @@ $title = "Daftar Pelaku Usaha / Produk";
 $custom_css = "detail.css";
 
 include '../includes/config.php';
-include 'auth_check.php';
 include 'header.php';
 include 'sidebar.php';
 
@@ -34,7 +33,50 @@ if (!$data) {
 $tgl_terbit   = !empty($data['tgl_terbit']) ? date('d F Y', strtotime($data['tgl_terbit'])) : '-';
 $tgl_berakhir = !empty($data['tgl_berakhir']) ? date('d F Y', strtotime($data['tgl_berakhir'])) : '-';
 $status_label = strtolower($data['label']) === 'hijau' ? 'badge-hijau' : 'badge-putih';
+
+/* ===============================
+   LOGIKA PESAN OTOMATIS BERDASARKAN TANGGAL
+================================ */
+$nama_usaha = htmlspecialchars($data['nama_unit']);
+$produk     = htmlspecialchars($data['nama_komoditas']);
+$tgl_akhir  = $data['tgl_berakhir']; // Format YYYY-MM-DD dari DB
+
+// Hitung selisih hari
+$today = new DateTime();
+$expired_date = new DateTime($tgl_akhir);
+$diff = $today->diff($expired_date);
+$hari_tersisa = (int)$diff->format("%r%a"); // Mengambil angka selisih (negatif jika sudah lewat)
+
+// Tentukan Template Pesan Berdasarkan Kondisi Tanggal
+if ($hari_tersisa < 0) {
+    // KONDISI 1: SUDAH KADALUARSA
+    $status_teks = "⚠️ *PEMBERITAHUAN MASA BERLAKU HABIS* ⚠️";
+    $isi_pesan = "Kami menginformasikan bahwa masa berlaku sertifikat PSAT Anda untuk produk *{$produk}* telah *HABIS* pada tanggal " . date('d/m/Y', strtotime($tgl_akhir)) . ". Mohon segera melakukan pengurusan perpanjangan.";
+} elseif ($hari_tersisa <= 30) {
+    // KONDISI 2: HAMPIR HABIS (30 Hari sebelum)
+    $status_teks = "🔔 *PENGINGAT MASA BERLAKU* 🔔";
+    $isi_pesan = "Kami ingin mengingatkan bahwa masa berlaku sertifikat PSAT Anda untuk produk *{$produk}* akan berakhir dalam *{$hari_tersisa} hari lagi* (Tanggal: " . date('d/m/Y', strtotime($tgl_akhir)) . "). Mohon persiapkan dokumen perpanjangan.";
+} else {
+    // KONDISI 3: MASIH AKTIF LAMA
+    $status_teks = "✅ *INFORMASI SERTIFIKASI PSAT* ✅";
+    $isi_pesan = "Sertifikat PSAT Anda untuk produk *{$produk}* saat ini berstatus *AKTIF* sampai tanggal " . date('d/m/Y', strtotime($tgl_akhir)) . ". Terima kasih telah menjaga kualitas pangan segar.";
+}
+
+$teks_wa = "Halo Bapak/Ibu dari *{$nama_usaha}*,\n\n"
+         . $status_teks . "\n"
+         . $isi_pesan . "\n\n"
+         . "Pesan ini dikirim otomatis melalui Sistem Informasi PSAT.";
+
+$url_pesan = urlencode($teks_wa);
+
+// Format Nomor WA agar diawali 62
+$no_wa = preg_replace('/[^0-9]/', '', $data['telepon']);
+if (substr($no_wa, 0, 1) === '0') {
+    $no_wa = '62' . substr($no_wa, 1);
+}
 ?>
+
+
 
 <div class="detail-container">
 
@@ -162,22 +204,35 @@ $status_label = strtolower($data['label']) === 'hijau' ? 'badge-hijau' : 'badge-
 
     <!-- SECTION 7 — NOTIFIKASI -->
     <div class="card-section">
-        <h3 class="section-title">Kirim Notifikasi</h3>
-
-        <div class="notif-buttons">
-            <?php if (!empty($data['telepon'])) : ?>
-                <a href="https://wa.me/<?= preg_replace('/[^0-9]/', '', $data['telepon']) ?>" target="_blank" class="btn btn-wa">
-                    📱 WhatsApp
-                </a>
-            <?php endif; ?>
-
-            <?php if (!empty($data['email'])) : ?>
-                <a href="mailto:<?= htmlspecialchars($data['email']) ?>" class="btn btn-email">
-                    📧 Email
-                </a>
-            <?php endif; ?>
-        </div>
+    <h3 class="section-title">Kirim Notifikasi</h3>
+    
+    <div style="margin-bottom: 10px; font-size: 14px;">
+        Status Pesan: 
+        <?php 
+            if($hari_tersisa < 0) echo "<span style='color:red; font-weight:bold;'>Sudah Kadaluarsa</span>";
+            elseif($hari_tersisa <= 30) echo "<span style='color:orange; font-weight:bold;'>Hampir Habis</span>";
+            else echo "<span style='color:green; font-weight:bold;'>Masih Aktif</span>";
+        ?>
     </div>
+
+    <div class="notif-buttons">
+        <?php if (!empty($data['telepon'])) : ?>
+            <a href="https://wa.me/<?= $no_wa ?>?text=<?= $url_pesan ?>" 
+               target="_blank" 
+               class="btn btn-wa">
+                📱 Kirim Pesan Otomatis (WA)
+            </a>
+        <?php endif; ?>
+
+        <?php if (!empty($data['email'])) : ?>
+            <a href="mailto:<?= htmlspecialchars($data['email']) ?>?subject=Info Sertifikat PSAT - <?= $nama_usaha ?>&body=<?= $url_pesan ?>" 
+               class="btn btn-email">
+                📧 Email
+            </a>
+        <?php endif; ?>
+    </div>
+</div>
+</div>
 
 </div>
 

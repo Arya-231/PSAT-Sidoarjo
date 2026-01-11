@@ -22,15 +22,6 @@ main {
 /* -----------------------------------
    PAGE WRAPPER
 ----------------------------------- */
-.page-container,
-.content-wrapper {
-    padding: 22px;
-    width: 100%;
-    max-width: 1180px;
-    margin: 0 auto;
-    box-sizing: border-box;
-}
-
 /* -----------------------------------
    TOOLBAR
 ----------------------------------- */
